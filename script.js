@@ -6,3 +6,8 @@ function addVar(war) {
     OUTPUT.innerText = outputContent + war
 }
 
+function clearAll() {
+    OUTPUT.innerText = ""
+}
+
+// TODO: add evaluation, and clear last functions
