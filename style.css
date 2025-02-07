@@ -29,6 +29,11 @@ body {
     left: 75vh;
 }
 
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .przycisk {
     border: none;
     border-radius: 5px;
