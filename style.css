@@ -1,6 +1,7 @@
 :root {
     --clr-background1: #ABABAB;
     --clr-background2: #DDD;
+    --clr-background3: #EEE;
     --clr-text: #212121;
 }
 
@@ -18,6 +19,12 @@ body {
     top: 10vh;
     left: 75vh;
     background-color: var(--clr-background2);
+}
+
+#output-wynik {
+    font-size: 2rem;
+    height: 100%;
+    width: 100%;
 }
 
 #input {
@@ -41,4 +48,8 @@ table {
     color: var(--clr-text);
     width: 10vh;
     height: 10vh;
+    transition: background-color 1s ease-out;
+    &:hover {
+        background-color: var(--clr-background3);
+    }
 }
