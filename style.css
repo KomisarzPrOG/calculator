@@ -9,3 +9,13 @@ body {
     background-color: var(--clr-background1);
 }
 
+#output {
+    position: absolute;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 10vh;
+    width: 50vh;
+    top: 10vh;
+    left: 75vh;
+    background-color: var(--clr-background2);
+}
