@@ -19,3 +19,21 @@ body {
     left: 75vh;
     background-color: var(--clr-background2);
 }
+
+#input {
+    position: absolute;
+    border: 1px solid black;
+    width: 50vh;
+    height: 500px;
+    top: 20.5vh;
+    left: 75vh;
+}
+
+.przycisk {
+    border: none;
+    border-radius: 5px;
+    background-color: var(--clr-background2);
+    color: var(--clr-text);
+    width: 10vh;
+    height: 10vh;
+}
