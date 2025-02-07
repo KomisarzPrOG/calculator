@@ -1,0 +1,11 @@
+:root {
+    --clr-background1: #ABABAB;
+    --clr-background2: #DDD;
+    --clr-text: #212121;
+}
+
+body {
+    height: 100vh;
+    background-color: var(--clr-background1);
+}
+
