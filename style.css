@@ -22,6 +22,7 @@ body {
 }
 
 #output-wynik {
+    margin-left: 10px;
     font-size: 2rem;
     height: 100%;
     width: 100%;
