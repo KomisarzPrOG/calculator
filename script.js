@@ -40,6 +40,8 @@ function calculate() {
         } else {
             throw "Last var was an operator!"
         }
+    } else {
+        result = ""
     }
 
     OUTPUT.innerText = result
