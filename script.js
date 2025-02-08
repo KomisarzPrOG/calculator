@@ -37,10 +37,12 @@ function calculate() {
     if(outputContent != "") {
         if(!['+','-','*','/'].includes(lastWar)) {
             var result = eval(outputContent)
+        } else {
+            throw "Last var was an operator!"
         }
     }
 
     OUTPUT.innerText = result
 }
 
-// TODO: add calculate, clearLast, and addPercentage functions
+// TODO: clearLast, and addPercentage functions
