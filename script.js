@@ -45,6 +45,11 @@ function addPercentage() {
             }
         }
     }
+
+    if(outputContent.length = 1) {
+        outputContent = outputContent/100
+        OUTPUT.innerText = outputContent
+    }
 }
 
 
