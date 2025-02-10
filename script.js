@@ -25,6 +25,29 @@ function addVar(war) {
     }
 }
 
+function addPercentage() {
+    let outputContent = OUTPUT.innerText
+
+    if (outputContent != "") {
+        if(!['+', '-', '*', '/'].includes(outputContent.charAt(outputContent.length-1))) {
+            let isOper, outputLength = outputContent.length, i = -1
+
+            while (i < outputLength && !['+', '-', '*', '/'].includes(isOper)) {
+                i++
+                isOper = outputContent.charAt(outputLength - 1 - i)
+            }
+
+            if (i != 1) {
+                let number = parseFloat(outputContent.slice(outputLength - i))
+                let percentage = number / 100
+
+                OUTPUT.innerText = outputContent.slice(0, outputLength - i) + percentage
+            }
+        }
+    }
+}
+
+
 function clearAll() {
     OUTPUT.innerText = ""
     lastComa = false
