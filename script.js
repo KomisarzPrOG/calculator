@@ -1,3 +1,5 @@
+// TODO: add a way to change to negative number and vice-versa
+
 const OUTPUT = document.getElementById('output-wynik')
 var lastComa = false
 var lastOper = true
