@@ -2,26 +2,47 @@ const OUTPUT = document.getElementById('output-wynik')
 var lastComa = false
 var lastOper = true
 var outputContent
+var operators = ['+', '-', '*', '/']
 
-function addVar(war) {
+function addNumber(number) {
     outputContent = OUTPUT.innerText
 
-    if(outputContent == "" && war == '.' && lastComa == false || lastOper == true && war == '.' && lastComa == false) {
-        OUTPUT.innerText = outputContent + "0" + war
-        lastComa = true
-        lastOper = true
-    } else if(lastComa == false && war == '.') {
-        OUTPUT.innerText = outputContent + war
-        lastComa = true
-    } else if(lastOper == false && war == '+' || lastOper == false && war == '-' || lastOper == false && war == '*' || lastOper == false && war == '/') {
-        OUTPUT.innerText = outputContent + war
-    } else if(war != '.' && war != '+' && war != '-' && war != '*' && war != '/') {
-        OUTPUT.innerText = outputContent + war
-        lastOper = false
+    OUTPUT.innerText = outputContent + number
+
+    lastOper = false
+}
+
+function addOperator(operator) {
+    outputContent = OUTPUT.innerText
+
+    if(outputContent.slice(-1) != ".") {
+        if(!lastOper) {
+            OUTPUT.innerText = outputContent + operator
+            lastOper = true
+            lastComa = false
+        }
     }
-    if(war == '+' || war == "-" || war == '*' || war == '/') {
-        lastComa = false
-        lastOper = true
+}
+
+function addComa() {
+    outputContent = OUTPUT.innerText 
+
+    function addZeroComa() {
+        OUTPUT.innerText = outputContent + "0."
+        lastComa = true
+    }
+
+    if(!lastComa) {    
+        if(outputContent != "") {
+            if(!lastOper) {
+                OUTPUT.innerText = outputContent + '.'
+                lastComa = true
+            } else {
+                addZeroComa()
+            }
+        } else {
+            addZeroComa()
+        }
     }
 }
 
@@ -29,10 +50,10 @@ function addPercentage() {
     let outputContent = OUTPUT.innerText
 
     if (outputContent != "") {
-        if(!['+', '-', '*', '/'].includes(outputContent.charAt(outputContent.length-1))) {
+        if(!operators.includes(outputContent.charAt(outputContent.length-1))) {
             let isOper, outputLength = outputContent.length, i = -1
 
-            while (i < outputLength && !['+', '-', '*', '/'].includes(isOper)) {
+            while (i < outputLength && !operators.includes(isOper)) {
                 i++
                 isOper = outputContent.charAt(outputLength - 1 - i)
             }
@@ -78,11 +99,15 @@ function clearLast() {
         }
     }
 
-    if(['+','-','*','/'].includes(outputContent.slice(-1))) {
+    if(operators.includes(outputContent.slice(-1))) {
         lastOper = true
     }
 
     OUTPUT.innerText = outputContent
+
+    if(OUTPUT.innerText == "") {
+        lastOper = true
+    }
 }
 
 function calculate() {
@@ -90,7 +115,7 @@ function calculate() {
     let lastWar = outputContent.slice(-1)
     
     if(outputContent != "") {
-            if(!['+','-','*','/'].includes(lastWar)) {
+            if(!operators.includes(lastWar)) {
                 var result = eval(outputContent)
             } else {
                 throw "Last var was an operator!"
@@ -105,5 +130,3 @@ function calculate() {
        OUTPUT.innerText = result 
     }    
 }
-
-// TODO: clearLast and addPercentage functions
