@@ -1,24 +1,22 @@
 const OUTPUT = document.getElementById('output-wynik')
-var lastComa = false
-var lastOper = true
-var outputContent
-var operators = ['+', '-', '*', '/']
+var lastComa = false, lastOperator = true, operatorAdded = false, symbolChanged = false, outputContent, operators = ['+', '-', '*', '/']
 
 function addNumber(number) {
     outputContent = OUTPUT.innerText
 
     OUTPUT.innerText = outputContent + number
 
-    lastOper = false
+    lastOperator = false
 }
 
 function addOperator(operator) {
     outputContent = OUTPUT.innerText
 
     if(outputContent.slice(-1) != ".") {
-        if(!lastOper) {
+        if(!lastOperator) {
             OUTPUT.innerText = outputContent + operator
-            lastOper = true
+            lastOperator = true
+            operatorAdded = true
             lastComa = false
         }
     }
@@ -34,7 +32,7 @@ function addComa() {
 
     if(!lastComa) {    
         if(outputContent != "") {
-            if(!lastOper) {
+            if(!lastOperator) {
                 OUTPUT.innerText = outputContent + '.'
                 lastComa = true
             } else {
@@ -63,6 +61,7 @@ function addPercentage() {
                 let percentage = number / 100
 
                 OUTPUT.innerText = outputContent.slice(0, outputLength - i) + percentage
+				lastComa = true
             }
         }
     }
@@ -77,7 +76,8 @@ function addPercentage() {
 function clearAll() {
     OUTPUT.innerText = ""
     lastComa = false
-    lastOper = true
+    lastOperator = true
+    operatorAdded = false
 }
 
 function clearLast() {
@@ -85,11 +85,11 @@ function clearLast() {
 
     if(outputContent != "") {
         if(lastComa == false) {
-            if(lastOper == false) {
+            if(lastOperator == false) {
                 outputContent = outputContent.slice(0,-1)
             } else {
                 outputContent = outputContent.slice(0,-1)
-                lastOper = false
+                lastOperator = false
             }
         } else if(outputContent.slice(-2) == 0) {
             outputContent = outputContent.slice(0,-2)
@@ -100,13 +100,55 @@ function clearLast() {
     }
 
     if(operators.includes(outputContent.slice(-1))) {
-        lastOper = true
+        lastOperator = true
     }
 
     OUTPUT.innerText = outputContent
 
     if(OUTPUT.innerText == "") {
-        lastOper = true
+        lastOperator = true
+        operatorAdded = false
+    }
+}
+
+function changeSymbol() {
+    outputContent = OUTPUT.innerText
+    let isOper, outputLength = outputContent.length, i = -1
+
+    if(outputContent != "") {
+        if(operatorAdded) {
+            if(!symbolChanged) {
+                while (i < outputLength && !operators.includes(isOper)) {
+                    i++
+                    isOper = outputContent.charAt(outputLength - 1 - i)
+                }
+
+                if (i != 1) {
+                    let number = outputContent.slice(outputLength - i)
+
+                    OUTPUT.innerText = outputContent.slice(0, outputLength - i) + "-" + number
+                    symbolChanged = true
+                }
+            } else {
+                while (i < outputLength && !operators.includes(isOper)) {
+                    i++
+                    isOper = outputContent.charAt(outputLength - 1 - i)
+                }
+
+                if (i != 1) {
+                    let number = outputContent.slice(outputLength - i)
+
+                    OUTPUT.innerText = outputContent.slice(0, outputLength - i - 1) + number
+                    symbolChanged = false
+                }
+            }
+        } else {
+            if(outputContent.slice(0,1) == "-") {
+                OUTPUT.innerText = outputContent.slice(1,outputContent.length)
+            } else {
+                OUTPUT.innerText = "-" + outputContent
+            }
+        }
     }
 }
 
@@ -117,6 +159,7 @@ function calculate() {
     if(outputContent != "") {
             if(!operators.includes(lastWar)) {
                 var result = eval(outputContent)
+                symbolChanged = false
             } else {
                 throw "Last var was an operator!"
             }
