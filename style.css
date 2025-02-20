@@ -21,7 +21,7 @@ body {
     background-color: var(--clr-background2);
 }
 
-#output-wynik {
+#output-result {
     margin-left: 10px;
     font-size: 2rem;
     height: 100%;
@@ -42,7 +42,7 @@ table {
     margin-right: auto;
 }
 
-.przycisk {
+.button {
     border: none;
     border-radius: 5px;
     background-color: var(--clr-background2);
