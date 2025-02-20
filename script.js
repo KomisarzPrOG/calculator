@@ -1,4 +1,4 @@
-const OUTPUT = document.getElementById('output-wynik')
+const OUTPUT = document.getElementById('output-result')
 var lastComa = false, lastOperator = true, operatorAdded = false, symbolChanged = false, outputContent, operators = ['+', '-', '*', '/']
 
 function addNumber(number) {
@@ -44,17 +44,21 @@ function addComa() {
     }
 }
 
+function whereIsOperator(content) {
+    let isOper, i=-1, contentLength = content.length
+    while (i < contentLength && !operators.includes(isOper)) {
+        i++
+        isOper = content.charAt(contentLength - 1 - i)
+    }
+    return i
+}
+
 function addPercentage() {
-    let outputContent = OUTPUT.innerText
+    let outputContent = OUTPUT.innerText, outputLength = outputContent.length, i
 
     if (outputContent != "") {
-        if(!operators.includes(outputContent.charAt(outputContent.length-1))) {
-            let isOper, outputLength = outputContent.length, i = -1
-
-            while (i < outputLength && !operators.includes(isOper)) {
-                i++
-                isOper = outputContent.charAt(outputLength - 1 - i)
-            }
+        if(!operators.includes(outputContent.charAt(outputLength-1))) {
+            i = whereIsOperator(outputContent)
 
             if (i != 1) {
                 let number = parseFloat(outputContent.slice(outputLength - i))
@@ -113,15 +117,12 @@ function clearLast() {
 
 function changeSymbol() {
     outputContent = OUTPUT.innerText
-    let isOper, outputLength = outputContent.length, i = -1
+    let isOper, outputLength = outputContent.length, i
 
     if(outputContent != "") {
         if(operatorAdded) {
             if(!symbolChanged) {
-                while (i < outputLength && !operators.includes(isOper)) {
-                    i++
-                    isOper = outputContent.charAt(outputLength - 1 - i)
-                }
+                i = whereIsOperator(outputContent)
 
                 if (i != 1) {
                     let number = outputContent.slice(outputLength - i)
@@ -130,10 +131,7 @@ function changeSymbol() {
                     symbolChanged = true
                 }
             } else {
-                while (i < outputLength && !operators.includes(isOper)) {
-                    i++
-                    isOper = outputContent.charAt(outputLength - 1 - i)
-                }
+                i = whereIsOperator(outputContent)
 
                 if (i != 1) {
                     let number = outputContent.slice(outputLength - i)
