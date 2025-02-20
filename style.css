@@ -62,18 +62,16 @@ table {
     &:active {
         transform: scale(0.95);
     }
-}
-
-.button#equal {
-    background-color: var(--clr-button-special);
+    &#equal {
+        background-color: var(--clr-button-special);
     &:hover {
         background-color: var(--clr-button-special-hover);
     }
-}
-
-.button#ac {
-    background-color: var(--clr-button-special);
+    }
+    &#ac {
+        background-color: var(--clr-button-special);
     &:hover {
         background-color: var(--clr-button-special-hover);
+    }
     }
 }
