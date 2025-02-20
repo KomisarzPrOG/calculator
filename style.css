@@ -1,56 +1,79 @@
 :root {
-    --clr-background1: #ABABAB;
-    --clr-background2: #DDD;
-    --clr-background3: #EEE;
-    --clr-text: #212121;
+    --clr-bg: #2c2f33;
+    --clr-panel: #23272a;
+    --clr-display: #99aab5;
+    --clr-button: #7289da;
+    --clr-button-hover: #5b6eae;
+    --clr-button-special: #d88f21;
+    --clr-button-special-hover: #a76e18;
+    --clr-text: #ffffff;
 }
 
 body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100vh;
-    background-color: var(--clr-background1);
+    background-color: var(--clr-bg);
+}
+
+#calc {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--clr-panel);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
+    width: 300px;
 }
 
 #output {
-    position: absolute;
-    border: 1px solid black;
-    border-radius: 5px;
-    height: 10vh;
-    width: 50vh;
-    top: 10vh;
-    left: 75vh;
-    background-color: var(--clr-background2);
-}
-
-#output-result {
-    margin-left: 10px;
+    background-color: var(--clr-display);
+    color: var(--clr-text);
     font-size: 2rem;
-    height: 100%;
-    width: 100%;
-}
-
-#input {
-    position: absolute;
-    border: 1px solid black;
-    width: 50vh;
-    height: 500px;
-    top: 20.5vh;
-    left: 75vh;
+    text-align: right;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 table {
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    border-spacing: 10px;
 }
 
 .button {
-    border: none;
-    border-radius: 5px;
-    background-color: var(--clr-background2);
+    background-color: var(--clr-button);
     color: var(--clr-text);
-    width: 10vh;
-    height: 10vh;
-    transition: background-color 1s ease-out;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    height: 60px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
     &:hover {
-        background-color: var(--clr-background3);
+        background-color: var(--clr-button-hover);
+    }
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+.button#equal {
+    background-color: var(--clr-button-special);
+    &:hover {
+        background-color: var(--clr-button-special-hover);
+    }
+}
+
+.button#ac {
+    background-color: var(--clr-button-special);
+    &:hover {
+        background-color: var(--clr-button-special-hover);
     }
 }

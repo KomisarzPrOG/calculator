@@ -14,7 +14,7 @@
         <div id="input">
             <table>
                 <tr>
-                    <td><button class="button" onclick="clearAll()">AC</button></td>
+                    <td><button class="button" id="ac" onclick="clearAll()">AC</button></td>
                     <td><button class="button" onclick="clearLast()">BS</button></td>
                     <td><button class="button" onclick="addPercentage()">%</button></td>
                     <td><button class="button" onclick="addOperator('/')">/</button></td>
@@ -41,7 +41,7 @@
                     <td><button class="button" onclick="changeSymbol()">+/-</button></td>
                     <td><button class="button" onclick="addNumber(0)">0</button></td>
                     <td><button class="button" onclick="addComa('.')">.</button></td>
-                    <td><button class="button" onclick="calculate()">=</button></td>
+                    <td><button class="button" id="equal" onclick="calculate()">=</button></td>
                 </tr>
             </table>
         </div>
