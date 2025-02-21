@@ -4,6 +4,11 @@ var lastComa = false, lastOperator = true, operatorAdded = false, symbolChanged 
 function addNumber(number) {
     outputContent = OUTPUT.innerText
 
+    if(outputContent.length == 1 && outputContent == "0") {
+        OUTPUT.innerText = ""
+        outputContent = ""
+    }
+
     OUTPUT.innerText = outputContent + number
 
     lastOperator = false
@@ -18,6 +23,7 @@ function addOperator(operator) {
             lastOperator = true
             operatorAdded = true
             lastComa = false
+            symbolChanged = false
         }
     }
 }
