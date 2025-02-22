@@ -133,8 +133,13 @@ function changeSymbol() {
                 if (i != 1) {
                     let number = outputContent.slice(outputLength - i)
 
-                    OUTPUT.innerText = outputContent.slice(0, outputLength - i) + "-" + number
-                    symbolChanged = true
+                    if(outputContent.charAt(outputLength-i-1) == '-' && outputContent.charAt(outputLength-1) != '-') {
+                        OUTPUT.innerText = outputContent.slice(0, outputLength - i) + "(-" + number + ")"
+                        symbolChanged = true
+                    } else if(outputContent.charAt(outputLength-1) != '-'){
+                        OUTPUT.innerText = outputContent.slice(0, outputLength - i) + "-" + number
+                        symbolChanged = true
+                    }
                 }
             } else {
                 i = whereIsOperator(outputContent)
