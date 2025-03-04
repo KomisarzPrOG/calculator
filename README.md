@@ -1,6 +1,6 @@
 # Calculator
 
-Simple calculator web app made by me to some more about CSS and JavaScript.
+Simple calculator web app made by me to learn more things about CSS and JavaScript.
 
 ## Features
 
