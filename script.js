@@ -1,6 +1,22 @@
 const OUTPUT = document.getElementById('output-result')
 var lastComa = false, lastOperator = true, operatorAdded = false, symbolChanged = false, outputContent, operators = ['+', '-', '*', '/']
 
+function precisionAlert() {
+    var precision = document.getElementById('precision'), value = Number(precision.value)
+
+    if(value > 15) {
+        precision.value = 15
+        alert("Precision cannot be above fifteen!")
+        return
+    }
+    
+    if(value < 0) {
+        precision.value = 0
+        alert("Precision cannot be below zero!")
+        return
+    }
+}
+
 function addNumber(number) {
     outputContent = OUTPUT.innerText
 
