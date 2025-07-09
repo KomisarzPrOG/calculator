@@ -162,15 +162,19 @@ function changeSymbol() {
 }
 
 function calculate() {
+    function round(value, precision) {
+        return Number(Math.round(value+"e"+precision) + "e-"+precision)
+    }
+
     outputContent = OUTPUT.innerText
-    let lastWar = outputContent.slice(-1)
+    let lastVar = outputContent.slice(-1), precision = document.getElementById('precision').value
     
     if(outputContent != "") {
-            if(!operators.includes(lastWar)) {
-                var result = eval(outputContent)
+            if(!operators.includes(lastVar)) {
+                var result = round(eval(outputContent),precision)
                 symbolChanged = false
             } else {
-                throw "Last var was an operator!"
+                alert("Last thing added was an operator!")
             }
     } else {
         result = ""
@@ -181,4 +185,8 @@ function calculate() {
     } else{
        OUTPUT.innerText = result 
     }    
+
+    if(Math.round(result) == result) {
+        lastComa = false
+    }
 }

@@ -1,5 +1,6 @@
 :root {
     --clr-bg: #2c2f33;
+    --clr-bg2: rgba(255, 255, 255, 0.06 );
     --clr-panel: #23272a;
     --clr-display: #99aab5;
     --clr-button: #7289da;
@@ -34,7 +35,6 @@ body {
     text-align: right;
     border-radius: 10px;
     margin-bottom: 10px;
-    min-height: 50px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -75,3 +75,40 @@ table {
     }
     }
 }
+
+
+#precision-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: var(--clr-bg2);
+    border-radius: 8px;
+    width: fit-content;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+}
+
+#precision-body input[type="number"] {
+    width: 60px;
+    padding: 6px 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #888;
+    background-color: var(--clr-background3);
+    color: var(--clr-text);
+    text-align: center;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#precision-body input[type="number"]:focus {
+    border-color: var(--clr-text);
+}
+
+#precision-body label {
+    margin-right: 8px;
+    color: var(--clr-text);
+}
+
